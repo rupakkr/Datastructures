@@ -59,13 +59,13 @@ public class RemoveDuplicateFrmSortedArray {
         if(nums.length == 0 || nums.length == 1){
             return nums.length;
         }
-        
-        int i=0;// index to point current element
+
+        int i=1;// index to point current element
         int j=0;// index to point unique element
         int length = nums.length;
-        while(i < length-1 ){
-            if(nums[i] != nums[i+1]){
-                nums[j++] = nums[i];
+        while(i < length ){
+            if(nums[i-1] != nums[i]){
+                nums[j++] = nums[i-1];
             }
             i++;
         }
@@ -88,7 +88,7 @@ public class RemoveDuplicateFrmSortedArray {
 
     public static void main(String[] args) {
 //        int[] nums = {1,1,2};
-        int[] nums = {0,0,1,1,1,2,2,3,3,4};
+        int[] nums = {0,0,1,1,2,2,3};
 
         int len = removeDuplicates(nums);
         System.out.println(len);
