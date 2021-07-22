@@ -32,11 +32,11 @@ package com.rpk.dsa.arrays;
  * 0 <= arr[i] <= 104
  */
 public class ValidMountainArray {
-    public boolean validMountainArray(int[] arr) {
+    public static boolean validMountainArray(int[] arr) {
         if(arr == null || arr.length < 3){
             return false;
         }
-        int level=0;// 0- flat,-1-> climb down, 1 -> limb up
+        int level=0;// 0- flat,-1-> climb down, 1 -> climb up
         int i=0;
         int j=1;
         int length=arr.length;
@@ -63,5 +63,12 @@ public class ValidMountainArray {
 
         }
         return result;
+    }
+
+
+    public static void main(String[] args) {
+//        int[] arr = {9,8,7,6,5,4,3,2,1,0};
+        int[] arr = {0,1,2,3,4,5,6,7,8,9};
+        System.out.println(validMountainArray(arr));
     }
 }
