@@ -33,66 +33,53 @@ public class _3Sum {
     public static List<List<Integer>> threeSum(int[] nums) {
 
         List<List<Integer>> list = new ArrayList<>();
-        // Edge Cases
-        if(nums == null || nums.length ==0 || (nums.length == 2 && nums[0] ==0 && nums[1] ==0)){
+
+        if(nums.length < 3){
             return list;
         }
 
-        for(int i=0; i< nums.length ; i++){
-            int target = 0-nums[i];
-            List<Integer> l = twoSum(nums,target,i);
-            if(l.size() > 1){
-                l.add(nums[i]);
 
-                if (checkDuplicate(list,l)){
-                    continue;
-                }
-                list.add(l);
-
-            }
-        }
-        return list;
-    }
-
-    public static List<Integer> twoSum(int[] nums, int target, int index){
-        HashMap<Integer,Integer> map = new HashMap<>();
-        List<Integer> list = new ArrayList<>();
+        Arrays.sort(nums);
 
         for(int i=0; i< nums.length; i++){
-            map.put(nums[i],i);
-        }
+            if( i > 0 && nums[i] == nums[i-1]){
+                continue;
+            }
+            int j = i+1;
+            int k=nums.length - 1;
 
-        for(int j=0; j< nums.length; j++){
-            int targetValue = target - nums[j];
-            // System.out.println(targetValue);
-            if(map.containsKey(targetValue) && map.get(targetValue) != j && map.get(targetValue) != index){
-                // System.out.println(j);
-                list.add(nums[j]);
-                list.add(targetValue);
-                break;
+            while(j<k){
+                if(nums[i] + nums[j]+nums[k] > 0){
+                    k-=1;
+                } else if(nums[i] + nums[j]+nums[k] < 0){
+                    j+=1;
+                } else {
+                    list.add(Arrays.asList(nums[i],nums[j],nums[k]));
+                    j+=1;
+                    while(j<k && nums[j] == nums[j-1]){
+                        j+=1;
+                    }
+                }
             }
         }
+
         return list;
-    }
 
-    public static Boolean checkDuplicate(List<List<Integer>> list, List<Integer> l){
-        for(List lt : list){
-            Boolean check = compareTwoList(lt,l);
-            if (check)
-                return true;
-        }
-
-        return false;
-    }
-
-    public static Boolean compareTwoList(List<Integer> list1, List<Integer> list2){
-        Set<Integer> set = new HashSet<>(list1);
-
-        return list1.size() == list2.size() && set.containsAll(list2);
     }
 
     public static void main(String[] args) {
+        int[] nums = {-1,0,1,2,-1,-4};
+        System.out.print("[");
+        for(List<Integer> l : threeSum(nums)){
+            System.out.print("[");
+            for(Integer i : l){
+                System.out.print(i);
+                System.out.print(" ");
+            }
+            System.out.print("] ");
 
+        }
+        System.out.print("]");
 
 
     }
