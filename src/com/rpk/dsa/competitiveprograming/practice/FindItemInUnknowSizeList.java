@@ -1,7 +1,7 @@
 package com.rpk.dsa.competitiveprograming.practice;
 
 /**
-
+ * Search given integer in unknown sized sorted array
  *
  */
 public class FindItemInUnknowSizeList {
