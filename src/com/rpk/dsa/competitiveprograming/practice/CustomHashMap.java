@@ -25,8 +25,8 @@ public class CustomHashMap<K,V> {
         this.bucket = new Object[initCapacity];
     }
 
-    public CustomHashMap(int capcity){
-        this.initCapacity = capcity;// default capacity
+    public CustomHashMap(int capacity){
+        this.initCapacity = capacity;// default capacity
         this.loadFactor=0;
         this.bucket = new Object[initCapacity];
     }
