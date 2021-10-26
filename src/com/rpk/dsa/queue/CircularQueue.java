@@ -4,7 +4,7 @@ public class CircularQueue {
     int data[];
     int head;
     int tail;
-    int size;
+        int size;
 
     public CircularQueue(int k) {
         data = new int[k];
